@@ -72,5 +72,9 @@ public class LoadControler {
     public String watchTable(){
         return table.toString();
     }
+
+    private boolean processFile(String path) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
