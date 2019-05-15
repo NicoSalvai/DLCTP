@@ -7,6 +7,9 @@ package main;
 
 import HashTable.TSB_OAHashtable;
 import file.FileReader;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import postgress.ConnectionHandler;
 
 /**
  *
@@ -17,8 +20,8 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        TSB_OAHashtable<String, Integer> aux = new TSB_OAHashtable<>();
+    public static void main(String[] args) throws SQLException {
+        /*TSB_OAHashtable<String, Integer> aux = new TSB_OAHashtable<>();
         
         
         FileReader file = new FileReader();
@@ -36,7 +39,13 @@ public class Main {
             aux.put(key, val);
             
         }
-        System.out.println(aux);
+        System.out.println(aux);*/
+        
+        ConnectionHandler ch = new ConnectionHandler();
+        
+        ResultSet r = ch.runCommand("Select * FROM document");
+        r.next();
+        System.out.println(r.getString(1) + r.getString(2));
     }
     
 }

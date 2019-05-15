@@ -11,7 +11,7 @@ CREATE TABLE vocabulario (
     id INTEGER NOT NULL,
     word VARCHAR(50) NOT NULL,
     n INTEGER,
-    tf FLOAT,
+    tfmax FLOAT,
     CHECK(id >= 1),
     PRIMARY KEY(id)
 );

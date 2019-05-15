@@ -18,9 +18,12 @@ import java.sql.Statement;
  */
 public class ConnectionHandler {
     
+    public ConnectionHandler(){
+        
+    }
     
     public ResultSet runCommand(String consulta){
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/example", "postgres", "postgres")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/tpdb", "dlcusr", "dlcpwd")) {
              Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(consulta);
             return resultSet;
@@ -38,7 +41,7 @@ public class ConnectionHandler {
     }
     
     public void run(String consulta){
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/example", "postgres", "postgres")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/tpdb", "dlcusr", "dlcpwd")) {
              Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(consulta);
             while (resultSet.next()) {
