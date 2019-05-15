@@ -1,0 +1,36 @@
+nmap localhost        escanear puertos
+5432
+    si ese puerto esta abierto entonces todo ok sino
+logearse como root
+y levantar el servicio
+
+logearse como postgress
+sudo -i            nos convertimos en root
+su -postgres        me convierto en usuario postgres
+
+    crear usuario perfil BD dlcusr
+createuser --help |less
+createuser -dEP dlcusr
+
+    crear base de datos
+createdb --help |less
+createdb  “dbname/sacdb”
+
+psql -h localhost tpdb
+
+help
+\h
+\?
+
+
+
+
+
+git clone https://github.com/NicoSalvai/DLCTP
+git add .
+git commit -m "agrego el proyecto web"
+ git config --global user.name NicoSalvai
+git config --global user.email nicolas.salvai95@gmail.com
+git commit -m "agrego el proyecto web"
+git push
+
