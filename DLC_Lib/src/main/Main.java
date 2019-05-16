@@ -6,6 +6,7 @@
 package main;
 
 import HashTable.TSB_OAHashtable;
+import control.CargaBD;
 import file.FileReader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,11 +42,14 @@ public class Main {
         }
         System.out.println(aux);*/
         
+        /*
         ConnectionHandler ch = new ConnectionHandler();
         
         ResultSet r = ch.runCommand("Select * FROM document");
         r.next();
-        System.out.println(r.getString(1) + r.getString(2));
+        System.out.println(r.getString(1) + r.getString(2));*/
+        
+        
     }
     
 }

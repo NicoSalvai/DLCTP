@@ -38,10 +38,9 @@ public class Controlador {
     
     public Controlador(){
         
-        if(!this.loadTable("HashTable.dat")){            
-            vocabulario = new TSB_OAHashtable<>(2000);
-        }
     }
+    
+    
     
     
     
@@ -72,15 +71,4 @@ public class Controlador {
     }
 
     
-    
-    /**
-     * Carga una tabla guardada en el archivo cuyo nombre es pasado por parametro
-     * @param file
-     * @return true si se cargo con exito y false si no se pudo cargar
-     */
-    public boolean loadTable(String file){
-        TSB_OAHashtableReader rd = new TSB_OAHashtableReader(file);
-        this.vocabulario = rd.read();
-        return this.vocabulario != null;
-    }
 }
