@@ -1,26 +1,37 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package motor;
 
 /**
  *
- * @author Nicolas
+ * @author dlcusr
  */
-public class Palabra implements Comparable{
+public class Palabra {
     
-    private String word;        //Identificador
-    private float n;            //cantidad de documentos en que aparece el termino
-    private float maxtf;        //maxima cantidad de estas en e1 documento
-    private String postReference;   //direccion de la tabla de posteo
+    private int id;
+    private String word;
+    private int n;
+    private int tfmax;
 
-    public Palabra(String word, float n, float maxtf, String postReference) {
+    public Palabra(int id, String word, int n, int tfmax) {
+        this.id = id;
         this.word = word;
         this.n = n;
-        this.maxtf = maxtf;
-        this.postReference = postReference;
+        this.tfmax = tfmax;
     }
     
+    public void incrementarN(){
+        this.n = this.n + 1;
+    }
     
-    
+    public void nuevoTfMax(int tf){
+        if(tfmax < tf){
+            tfmax = tf;
+        }
+    }
     
     
     
@@ -30,19 +41,39 @@ public class Palabra implements Comparable{
     
     
 
-    @Override
-    public int hashCode() {
-        return word.hashCode(); //To change body of generated methods, choose Tools | Templates.
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj); //To change body of generated methods, choose Tools | Templates.
+    public void setId(int id) {
+        this.id = id;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getWord() {
+        return word;
     }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
+
+    public int getTfmax() {
+        return tfmax;
+    }
+
+    public void setTfmax(int tfmax) {
+        this.tfmax = tfmax;
+    }
+    
+    
+    
     
 }

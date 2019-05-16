@@ -9,7 +9,6 @@ import HashTable.TSB_OAHashtable;
 import HashTable.TSB_OAHashtableReader;
 import HashTable.TSB_OAHashtableWriter;
 import file.FileReader;
-import motor.Palabra;
 
 /**
  *

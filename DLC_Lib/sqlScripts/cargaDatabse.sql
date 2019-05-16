@@ -13,3 +13,10 @@ values(1,'',0,1.5);
 INSERT INTO posteo (id, word_id, document_id, tf)
 values(1,1,1,1.5);
 
+
+
+
+
+
+SELECT max(id)
+FROM vocabulario;
