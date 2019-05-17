@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/dlcusr/NetBeansProjects/TPGit/DLCTP/DLC_Lib/src/motor/Buscador.java</file>
+            <file>file:/home/dlcusr/NetBeansProjects/TPGit/DLCTP/DLC_Lib/src/main/Main.java</file>
+            <file>file:/home/dlcusr/NetBeansProjects/TPGit/DLCTP/DLC_Lib/sqlScripts/cargaDatabse.sql</file>
+            <file>file:/home/dlcusr/NetBeansProjects/TPGit/DLCTP/DLC_Lib/src/motor/Sitio.java</file>
+            <file>file:/home/dlcusr/NetBeansProjects/TPGit/DLCTP/DLC_Lib/src/motor/Palabra.java</file>
+            <file>file:/home/dlcusr/NetBeansProjects/TPGit/DLCTP/DLC_Lib/src/postgress/ConnectionHandler.java</file>
+            <file>file:/home/dlcusr/NetBeansProjects/TPGit/DLCTP/DLC_Lib/sqlScripts/createDatabase.sql</file>
+            <file>file:/home/dlcusr/NetBeansProjects/TPGit/DLCTP/DLC_Lib/src/control/CargaBD.java</file>
+        </group>
     </open-files>
 </project-private>

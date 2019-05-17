@@ -70,36 +70,35 @@ public class ConnectionHandler {
     
     
     
-    public void runAddSite(int id, String title, String content){
+    
+    
+    public void runAddSite( int id, String title, String content){
             ConnectionHandler ch = new ConnectionHandler();
-            this.runCommandInsert("INSERT INTO document (id, title, content)\n" + "values( "+ id +",'"+ title +"','"+ content +"');");
+            
+            
+        try {
+            String aux = ch.runLastPosteoID();
+            if(aux == null) { aux = "0";}
+            int auxiliarID = Integer.valueOf(aux)+1;
+            
+            this.runCommandInsert("INSERT INTO document (id, title, content)\n" 
+                    + "values( "+ id +",'"+ title +"','"+ content +"');");
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
             
     }
     
-    public String runLastWordID() throws SQLException{
-            ConnectionHandler ch = new ConnectionHandler();
-            String aux = "";
-            
-            try{
-                ResultSet r =  this.runCommand("SELECT max(id) FROM vocabulario;");
-                r.next();
-                aux = r.getString(1);
- 
-            } catch (SQLException e) {
-                System.out.println("Connection failure.");
-                e.printStackTrace();
-            }
-            return aux;
-    }
     
     
     public void runAddPosteo(int documentID, int tf, int wordID){
         ConnectionHandler ch = new ConnectionHandler();
             
         try {
-        String aux = ch.runLastPosteoID();
-        if(aux == null) { aux = "0";}
-        int auxiliar = Integer.valueOf(aux)+1;
+            String aux = ch.runLastPosteoID();
+            if(aux == null) { aux = "0";}
+            int auxiliar = Integer.valueOf(aux)+1;
         
             this.runCommandInsert("INSERT INTO posteo (id, word_id, document_id, tf) "
                     + "values(" + auxiliar + ","+ wordID +","+ documentID +","+ tf +");");
@@ -111,21 +110,42 @@ public class ConnectionHandler {
     
     
     
-    public String runLastPosteoID() throws SQLException{
-            ConnectionHandler ch = new ConnectionHandler();
-            String aux = "";
+    
+    public void runAddWord(int id, String word, int tfmax, int n){
+        ConnectionHandler ch = new ConnectionHandler();
+        
+        
+        try {
+            String aux = ch.runLastPosteoID();
+            if(aux == null) { aux = "0";}
+            int auxiliarID = Integer.valueOf(aux)+1;
             
-            try{
-                ResultSet r =  this.runCommand("SELECT max(id) FROM posteo;");
-                r.next();
-                aux = r.getString(1);
- 
-            } catch (SQLException e) {
-                System.out.println("Connection failure.");
-                e.printStackTrace();
-            }
-            return aux;
+            this.runCommandInsert("INSERT INTO vocabulario (id, word, n, tfmax) "
+                    + "values(" + id +",'" + word + "'," + n + "," + tfmax + ");");
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+            
+
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public String runLastSiteID() throws SQLException{
             ConnectionHandler ch = new ConnectionHandler();
@@ -144,12 +164,37 @@ public class ConnectionHandler {
     }
     
     
-    public void runAddWord(int id, String word, int tfmax, int n){
+    
+    public String runLastWordID() throws SQLException{
             ConnectionHandler ch = new ConnectionHandler();
-            this.runCommandInsert("INSERT INTO vocabulario (id, word, n, tfmax) "
-                    + "values(" + id +",'" + word + "'," + n + "," + tfmax + ");");
-
+            String aux = "";
+            
+            try{
+                ResultSet r =  this.runCommand("SELECT max(id) FROM vocabulario;");
+                r.next();
+                aux = r.getString(1);
+ 
+            } catch (SQLException e) {
+                System.out.println("Connection failure.");
+                e.printStackTrace();
+            }
+            return aux;
     }
     
     
+    public String runLastPosteoID() throws SQLException{
+            ConnectionHandler ch = new ConnectionHandler();
+            String aux = "";
+            
+            try{
+                ResultSet r =  this.runCommand("SELECT max(id) FROM posteo;");
+                r.next();
+                aux = r.getString(1);
+ 
+            } catch (SQLException e) {
+                System.out.println("Connection failure.");
+                e.printStackTrace();
+            }
+            return aux;
+    }
 }

@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dlc.tp.web.ctrl.busqueda;
+package dlc.tp.web.ctrl.resultados;
 
+import dlc.tp.Generador;
+import dlc.tp.Site;
+import dlc.tp.web.aux.ErrorMsg;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -14,14 +19,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dlc.tp.Generador;
-import dlc.tp.web.aux.ErrorMsg;
 
 /**
  *
  * @author dlcusr
  */
-public class CtrlSearch extends HttpServlet {
+public class CtrlResultados extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,20 +42,38 @@ public class CtrlSearch extends HttpServlet {
         ErrorMsg errorMsg = null;
 
         try {
+           int id = Integer.parseInt(request.getParameter("id"));
+           
+           Site resultado = Generador.getResultado(id);
+           
+           request.setAttribute("resultado", resultado);
+           dest = "/resultado.jsp";
+           
             
-           if (request.getParameter("searchText") != null && !"".equals(request.getParameter("searchText"))) Generador.populateResultados();
-           
-           List resultados = Generador.getResultadosList();
-           
-           request.setAttribute("resultados", resultados);
-           dest = "/busqueda.jsp";
+            String txtFilePath = resultado.getPath();
+            BufferedReader reader = new BufferedReader(new FileReader(txtFilePath));
+            
+            StringBuilder sb = new StringBuilder();
+            String line;
 
+            while((line = reader.readLine())!= null){
+                sb.append(line+"<br>");
+            }
+            
+            request.setAttribute("contenido", sb.toString());
+           
+            
+            
+            
         } catch (Exception e) {
             errorMsg = new ErrorMsg(errorTitle, e.getMessage());
             request.setAttribute("errorMsg", null);
         } finally {
             
         }
+        
+        
+        
 
         ServletContext app = this.getServletContext();
         RequestDispatcher disp = app.getRequestDispatcher(dest);

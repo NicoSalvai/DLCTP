@@ -28,9 +28,8 @@
                     <div class="row">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">${res.nombre}</h5>
-                                <a href="#" class="card-link">resolver urls</a>
-                                <p class="card-text">${res.descripcion}</p>
+                                <h5 class="card-title">${res.title}</h5>
+                                <a href="<c:url value="/resultados?id=${res.id}"/>" class="card-link">resolver urls</a>
                             </div>
                         </div>  
                     </div>

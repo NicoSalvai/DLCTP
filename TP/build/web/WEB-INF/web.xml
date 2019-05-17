@@ -4,9 +4,17 @@
         <servlet-name>CtrlSearch</servlet-name>
         <servlet-class>dlc.tp.web.ctrl.busqueda.CtrlSearch</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlResultados</servlet-name>
+        <servlet-class>dlc.tp.web.ctrl.resultados.CtrlResultados</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlSearch</servlet-name>
         <url-pattern>/busqueda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlResultados</servlet-name>
+        <url-pattern>/resultados</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

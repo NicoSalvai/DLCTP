@@ -1,17 +1,16 @@
-INSERT INTO document (id, title, content) 
-values(1 ,'testTitle1', 'testContentInsertLoremIpsum1'),
-(2 ,'testTitle2', 'testContentInsertLoremIpsum2'),
-(3 ,'testTitle3', 'testContentInsertLoremIpsum3');
+INSERT INTO site (id, title, filepath,processed)
+values(1,'','', false);
 
-
-INSERT INTO document (id, title, content)
-values(1,'','');
-
-INSERT INTO vocabulario (id, word, n, tfmax)
+INSERT INTO word (id, word, n, tfmax)
 values(1,'',0,1.5);
 
-INSERT INTO posteo (id, word_id, document_id, tf)
+INSERT INTO post (id, site_id, word_id, tf)
 values(1,1,1,1.5);
+
+--UPDATE DOCUMENTO
+UPDATE site
+SET processed = true
+WHERE id = 0 OR title = '';
 
 
 
@@ -19,4 +18,10 @@ values(1,1,1,1.5);
 
 
 SELECT max(id)
-FROM vocabulario;
+FROM word;
+
+SELECT max(id)
+FROM post;
+
+SELECT max(id)
+FROM site;

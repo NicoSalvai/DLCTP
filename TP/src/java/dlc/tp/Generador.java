@@ -38,13 +38,22 @@ public abstract class Generador {
     
     
     
-    public static int updateResultado(Resultado resultado) throws Exception {
+    public static Site getResultado(int id){
+        Site resultado = new Site("ylwlp10");
+        return resultado;
+    }
+    
+    
+    
+    public static int updateResultado(Site resultado) throws Exception {
         if (resultado == null) {
-            throw new Exception("CURSO ERROR: curso vacío.");
+            throw new Exception("");
         }
-        if (resultado.getNombre() == null || resultado.getNombre().equals("")) {
-            throw new Exception("CURSO ERROR: curso incorrecto.");
+        
+        if (resultado.getTitle()== null || resultado.getTitle().equals("")) {
+            throw new Exception("");
         }
+        
         if (resultados == null) {
             resultados = new Hashtable();
         }
@@ -72,9 +81,9 @@ public abstract class Generador {
     public static void populateResultados() throws Exception {
         if (resultados == null) resultados = new Hashtable();
         if (resultados.isEmpty()) {
-            updateResultado(new Resultado("google", "Descripcion1"));
-            updateResultado(new Resultado("facebook", "Descripcion3"));
-            updateResultado(new Resultado("linkedin", "Descripcion2"));
+            updateResultado(new Site("google"));
+            updateResultado(new Site("facebook"));
+            updateResultado(new Site("linkedin"));
         }
     }
 }
