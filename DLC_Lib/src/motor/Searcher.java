@@ -5,6 +5,7 @@
  */
 package motor;
 
+import file.FileReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import postgress.DBConnection;
@@ -41,6 +42,25 @@ public class Searcher {
     
     
     public boolean procesarSitio(Site newSite){
+        Hashtable<String,Integer> posteo = new Hashtable<>();
+        FileReader file = new FileReader();
+        String key;
+        int val;
+        
+        file.openFile(newSite.getPath());
+        
+        while(file.hasNextToRead()){
+
+            key = file.readNextWord();
+            val = posteo.getOrDefault(key, 0) + 1;
+            
+            
+            posteo.put(key, val);
+            
+        }
+        
+        System.out.println(posteo);
+        
         return false;
     }
     

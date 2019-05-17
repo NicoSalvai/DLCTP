@@ -1,11 +1,11 @@
 INSERT INTO site (id, title, filepath,processed)
-values(1,'','', false);
+values(1,'','',false);
 
 INSERT INTO word (id, word, n, tfmax)
-values(1,'',0,1.5);
+values(0,'',0,0);
 
 INSERT INTO post (id, site_id, word_id, tf)
-values(1,1,1,1.5);
+values(0,0,0,0);
 
 --UPDATE DOCUMENTO
 UPDATE site

@@ -127,8 +127,14 @@ public class DBConnection {
     
     public int getTableNextID(String table){
         String aux="";
+        ResultSet rs;
+        
         try {
-            aux = this.runCommand("SELECT max(id) FROM " + table + ";").getString(1);
+            rs = this.runCommand("SELECT max(id) FROM " + table + ";");
+            if(rs.next()){
+                aux = rs.getString(1);
+            }
+            
             if(aux == null || aux == ""){ aux = "1";}
             
         } catch (SQLException ex) {

@@ -25,8 +25,8 @@ CREATE TABLE POST (
     tf INTEGER NOT NULL,
     CHECK(id >= 1),
     PRIMARY KEY(id),
-    FOREIGN KEY (word_id) REFERENCES vocabulario(id),
-    FOREIGN KEY (document_id) REFERENCES document(id)
+    FOREIGN KEY (word_id) REFERENCES word(id),
+    FOREIGN KEY (site_id) REFERENCES site(id)
 );
 
 

@@ -5,7 +5,8 @@
  */
 package main;
 
-import java.sql.SQLException;
+import motor.Searcher;
+import motor.Site;
 
 /**
  *
@@ -16,7 +17,11 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args){
+        Searcher b = new Searcher();
+        Site s = new Site("wrnpc10");
+        
+        b.procesarSitio(s);
         
     }
     
