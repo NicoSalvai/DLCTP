@@ -17,19 +17,19 @@ public class Site {
     private String title;               //Titulo del documento
     private String path;                //Path al archivo que contiene el documento
     private int id;                     //id del documento en la BD
-    private boolean processed; //Si es que ya se proceso y se crearon sus posteos
+    private boolean processed;          //Si es que ya se proceso y se crearon sus posteos
 
   
      //##################################################    CONSTRUCTORES
     
     public Site(String nombre) {
-        this(nombre,0,false,false);
+        this(nombre,0,false);
     }
     
     
-    public Site(String title, int id, boolean processed, boolean loaded) {
+    public Site(String title, int id, boolean processed ) {
         this.title = title;
-        this.path = this.DOCUMENTS_PATH + title + ".txt";
+        this.path = this.DOCUMENTS_PATH + title + "";
         this.id = id;
         this.processed = processed;
     }

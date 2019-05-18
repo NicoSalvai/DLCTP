@@ -30,6 +30,9 @@ public class Word {
         this.n = DEFAULT_N;
         this.tfmax = DEFAULT_TFMAX;
     }
+    public Word(String word, int n, int tfmax) {
+        this(0,word,n,tfmax);
+    }
     
     public Word(int id, String word, int n, int tfmax) {
         this.id = id;

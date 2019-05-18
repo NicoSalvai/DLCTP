@@ -6,6 +6,7 @@ package HashTable;
  * @author Nico Salvai
  */
 import java.io.*;
+import java.util.Hashtable;
 public class TSB_OAHashtableReader {
     
       private String arch;
@@ -24,16 +25,16 @@ public class TSB_OAHashtableReader {
        * Recupera una Hashtable desde un archivo serializado.
        * @return una referencia al objeto recuperado.
        */
-      public TSB_OAHashtable read()
+      public Hashtable read()
       {
-           TSB_OAHashtable ht = null;
+           Hashtable ht = null;
            
            try
            {
                  FileInputStream istream = new FileInputStream(arch);
                  ObjectInputStream p = new ObjectInputStream(istream);
           
-                 ht = ( TSB_OAHashtable ) p.readObject();
+                 ht = ( Hashtable ) p.readObject();
                  
                  p.close();
                  istream.close();

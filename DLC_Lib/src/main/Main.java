@@ -5,8 +5,10 @@
  */
 package main;
 
+import java.util.Scanner;
 import motor.Searcher;
 import motor.Site;
+import postgress.CargaInicial;
 
 /**
  *
@@ -18,10 +20,27 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args){
-        Searcher b = new Searcher();
-        Site s = new Site("wrnpc10");
         
-        b.procesarSitio(s);
+        Searcher b = new Searcher();
+        CargaInicial charger = new CargaInicial();
+        int op = 0;
+        
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        
+        
+        while(op >= -1){
+            System.out.println("cuanto cargo ");
+            op = myObj.nextInt();  // Read user input
+            
+            if(op>0){
+                charger.cargarX(op, b);
+                
+            }
+            if (op == -1){
+                b.actualizarVocabularioBD();
+            }
+        }
+        
         
     }
     

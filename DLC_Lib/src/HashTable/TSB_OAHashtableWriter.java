@@ -6,6 +6,8 @@ package HashTable;
  * @author Nico Salvai
  */
 import java.io.*;
+import java.util.Hashtable;
+
 public class TSB_OAHashtableWriter {
     // nombre del archivo serializado...
       private String arch;
@@ -24,7 +26,7 @@ public class TSB_OAHashtableWriter {
        * @param ht la lista a serializar.
      * @return 
        */
-      public boolean write (TSB_OAHashtable ht)
+      public boolean write (Hashtable ht)
       {
            try
            {
