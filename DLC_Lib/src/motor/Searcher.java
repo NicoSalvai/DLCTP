@@ -7,6 +7,7 @@ package motor;
 
 import file.FileReader;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import postgress.DBConnection;
 
@@ -47,6 +48,8 @@ public class Searcher {
         String key;
         int val;
         
+        //this.loadSiteToDB(newSite);
+        
         file.openFile(newSite.getPath());
         
         while(file.hasNextToRead()){
@@ -65,6 +68,21 @@ public class Searcher {
     }
     
     
+    
+    
+    public void posteoToVocabulario(Hashtable<String,Integer> posteo, int siteID){
+        Enumeration e = posteo.keys();
+        String key;
+        int val;
+        
+        while(e.hasMoreElements()){
+            key = (String) e.nextElement();
+            val = posteo.getOrDefault(key, 0);
+            
+            vocabulario.getOrDefault(key, defaultValue)
+        }
+        
+    }
     
      
     

@@ -7,16 +7,17 @@ values(0,'',0,0);
 INSERT INTO post (id, site_id, word_id, tf)
 values(0,0,0,0);
 
---UPDATE DOCUMENTO
+--###############################33 RESET
+DELETE FROM post;
+DELETE FROM word;
+DELETE FROM site;
+
+--################################      UPDATE DOCUMENTO
 UPDATE site
 SET processed = true
 WHERE id = 0 OR title = '';
 
-
-
-
-
-
+--######################################3GET MAX ID FOR ANY
 SELECT max(id)
 FROM word;
 
