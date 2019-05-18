@@ -7,7 +7,6 @@ package main;
 
 import java.util.Scanner;
 import motor.Searcher;
-import motor.Site;
 import postgress.CargaInicial;
 
 /**
@@ -36,11 +35,7 @@ public class Main {
                 charger.cargarX(op, b);
                 
             }
-            if (op == -1){
-                b.actualizarVocabularioBD();
-            }
         }
-        
         
     }
     

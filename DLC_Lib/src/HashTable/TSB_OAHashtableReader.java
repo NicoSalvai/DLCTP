@@ -41,6 +41,7 @@ public class TSB_OAHashtableReader {
            }
            catch (Exception e)
            {
+               System.out.println(e.toString());
            }
            
            return ht;

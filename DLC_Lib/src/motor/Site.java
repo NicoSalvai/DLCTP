@@ -12,10 +12,12 @@ package motor;
 public class Site {
     //##################################################    CONSTANTES
     private final String DOCUMENTS_PATH = "/home/dlcusr/NetBeansProjects/TPGit/DLCTP/DLC_Lib/DocumentosTP1/";
+    private final String POST_PATH = "/home/dlcusr/NetBeansProjects/TPGit/DLCTP/DLC_Lib/DocumentosTP1/Posteos/";
     
         //##################################################    Variables
     private String title;               //Titulo del documento
     private String path;                //Path al archivo que contiene el documento
+    private String postpath;
     private int id;                     //id del documento en la BD
     private boolean processed;          //Si es que ya se proceso y se crearon sus posteos
 
@@ -30,6 +32,7 @@ public class Site {
     public Site(String title, int id, boolean processed ) {
         this.title = title;
         this.path = this.DOCUMENTS_PATH + title + "";
+        this.postpath = this.POST_PATH + title + ".dat";
         this.id = id;
         this.processed = processed;
     }
@@ -73,6 +76,16 @@ public class Site {
     public void setProcessed(boolean processed) {
         this.processed = processed;
     }
+
+    public String getPost_path() {
+        return postpath;
+    }
+
+    public void setPost_path(String post_path) {
+        this.postpath = post_path;
+    }
+    
+    
 
     
 }

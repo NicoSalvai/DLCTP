@@ -9,7 +9,7 @@ import file.FileReader;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import postgress.DBConnection;
+import postgress.DBFilesConnection;
 
 /**
  *
@@ -19,16 +19,18 @@ public class Searcher {
     
     //#################################################33 VARIABESL
     private Hashtable<String,Word> vocabulario;
-    private DBConnection DataBase;
+    private DBFilesConnection DataBase;
     
     
     
     //############################################CONSTRUCTOR
     public Searcher(){
-        vocabulario = new Hashtable<>();
-        DataBase = new DBConnection();
+        DataBase = new DBFilesConnection();
         vocabulario = DataBase.getVocabularioCompleto();
-        
+        if(vocabulario == null){
+            vocabulario = new Hashtable<>();
+        }
+        System.out.println("voc" + vocabulario.size());
     }
     
     
@@ -75,7 +77,7 @@ public class Searcher {
             
         }
         
-        this.posteoToVocabulario(posteo, newSite.getId());
+        this.posteoToVocabulario(posteo, newSite);
         this.processedSite(newSite);
         
         return false;
@@ -84,13 +86,11 @@ public class Searcher {
     
     
     
-    public void posteoToVocabulario(Hashtable<String,Integer> posteo, int siteID){
+    public void posteoToVocabulario(Hashtable<String,Integer> posteo, Site site){
         Enumeration e = posteo.keys();
         String key;
         int val;
         
-        /*##########################*/System.out.println("posteo" + posteo);
-        /*##########################*/System.out.println(posteo.size());
         
         while(e.hasMoreElements()){
             key = (String) e.nextElement();
@@ -100,19 +100,18 @@ public class Searcher {
             if(actualWord != null){
                 actualWord.incrementarN();
                 actualWord.nuevoTfMax(val);
-                //this.loadVocabularioToDB(actualWord);
                 
             } else {
                 actualWord = new Word(key,1,val);
-                this.loadVocabularioToDB(actualWord);
                 vocabulario.put(key, actualWord);
                 
             }
             
-            this.loadPosteoToDB(siteID, actualWord.getId(), val);
         }
-        /*##########################*/System.out.println("woirds" + vocabulario);
-        /*##########################*/System.out.println(vocabulario.size());
+        this.savePost(posteo, site);
+        this.saveVocabulario();
+        /*##########################*/System.out.println("posteo" + posteo.size());
+        /*##########################*/System.out.println("woirds" + vocabulario.size());
     }
     
      
@@ -127,33 +126,16 @@ public class Searcher {
     private void loadSiteToDB(Site newSite) {
         newSite.setId(this.DataBase.insertSite(newSite.getTitle(), newSite.getPath()));
     }
-        
-    private void loadPosteoToDB(int siteID, int wordID, int tf) {
-        this.DataBase.insertPost(siteID, wordID, tf);
-    }
-        
-    private void loadVocabularioToDB(Word p) { 
-        if(p.getId() == 0){
-            p.setId(this.DataBase.insertWord(p.getWord(), p.getN(), p.getTfmax()));
-        } else{
-            this.DataBase.updateWord(p.getId(), p.getN(), p.getTfmax());
-        }
-        
-    }
-    
     
     private void processedSite(Site site){
         this.DataBase.processedSite(site.getTitle());
     } 
     
-    public void actualizarVocabularioBD(){
-        Enumeration v = vocabulario.elements();
-        
-        while(v.hasMoreElements()){
-            Word w = (Word) v.nextElement();
-            this.loadVocabularioToDB(w);
-        }
+    public void saveVocabulario(){
+        this.DataBase.saveVocabulario(vocabulario);
     }
-
-
+    
+    public void savePost(Hashtable<String,Integer> posteo, Site site){
+        this.DataBase.savePost(posteo, site);
+    }
 }

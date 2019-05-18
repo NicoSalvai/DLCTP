@@ -5,11 +5,13 @@
  */
 package motor;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dlcusr
  */
-public class Word {
+public class Word implements Serializable{
     
     //################################################  CONSTANTES
     private final int DEFAULT_ID = 0;
